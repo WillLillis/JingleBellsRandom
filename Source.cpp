@@ -171,9 +171,9 @@ std::string jingleBellsLyrics[] = {
     "\nIn-", "a ", "one ", "horse ", "op-", "en ", "sleighhhhhh\n"
 };
 
-void getscaledRand(uint32_t* U, uint32_t min, uint32_t max)
+uint32_t getscaledRand(uint32_t min, uint32_t max)
 {
-    *U = (uint32_t)(rand() % (max - min + 1)) + min;
+    return (uint32_t)(rand() % (max - min + 1)) + min;
     //printf("New U: %d\n",U);
 }
 
@@ -216,8 +216,8 @@ int main()
     printf("Press the \'Q\' key to exit the following the completion of the current song.\n");
     while (!_kbhitpoll(qinit))
     {
-        getscaledRand(&U1, 0, 8); // choose which key
-        getscaledRand(&U2, 100, 200); // choose BPM
+        U1 = getscaledRand(0, 8); // choose which key
+        U2 = getscaledRand(100, 200); // choose BPM
         printf("\n\n");
         printf("Key: %d, BPM: %d\n", U1, U2);
         switch (U1)
